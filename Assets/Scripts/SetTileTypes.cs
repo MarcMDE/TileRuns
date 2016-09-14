@@ -52,10 +52,26 @@ public class SetTileTypes
 
             if (tileType == TileTypes.CORNER)
             {
-                if (direction.x > 0 || direction.y > 0) childObjs[path[i]].transform.localScale = new Vector3(-1, -1, 1);
-                else if (direction.y < 0 && prevDirection.x < 0) childObjs[path[i]].transform.localScale = new Vector3(-1, -1, 1);
-                else if (direction.y < 0) childObjs[path[i]].transform.localScale = new Vector3(1, -1, 1);
-                else if (direction.x < 0) childObjs[path[i]].transform.localScale = new Vector3(1, -1, 1);
+                if (direction.y > 0) 
+                {
+                    if (prevDirection.x > 0) childObjs[path[i]].transform.localScale = new Vector3(-1, -1, 1);
+                    else if (prevDirection.x < 0) childObjs[path[i]].transform.localScale = new Vector3(1, -1, 1);
+                }
+                else if (direction.y < 0)
+                {
+                    if (prevDirection.x > 0) childObjs[path[i]].transform.localScale = new Vector3(1, -1, 1);
+                    else if (prevDirection.x < 0) childObjs[path[i]].transform.localScale = new Vector3(-1, -1, 1);
+                }
+                else if (direction.x < 0)
+                {
+                    if (prevDirection.y > 0) childObjs[path[i]].transform.localScale = new Vector3(-1, -1, 1);
+                    else if (prevDirection.y < 0) childObjs[path[i]].transform.localScale = new Vector3(1, -1, 1);
+                }
+                else if (direction.x > 0)
+                {
+                    if (prevDirection.y < 0) childObjs[path[i]].transform.localScale = new Vector3(-1, -1, 1);
+                    if (prevDirection.y > 0) childObjs[path[i]].transform.localScale = new Vector3(1, -1, 1);
+                }
             }
             else if (tileType == TileTypes.BORDER && i >= gridObjs.Length - 1) direction = new Vector2(direction.x * -1, direction.y * -1);
 
