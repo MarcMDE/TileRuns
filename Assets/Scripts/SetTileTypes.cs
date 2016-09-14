@@ -37,7 +37,7 @@ public class SetTileTypes
                 direction.Normalize();
             }
 
-            Debug.Log("Direction_" + gridObjs[path[i]].name + " = " + direction);
+            //Debug.Log("Direction_" + gridObjs[path[i]].name + " = " + direction);
 
             if (i == 0 || i >= gridObjs.Length - 1) tileType = TileTypes.BORDER;
             else if (Vector2.Dot(prevDirection, direction) > 0) tileType = TileTypes.STRAIGHT;

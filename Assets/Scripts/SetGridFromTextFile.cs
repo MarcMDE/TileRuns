@@ -48,7 +48,7 @@ public class SetGridFromTextFile
             for (int j=0; j<rows; j++)
             {
                 values.Add(int.Parse(textFile.text.Split("\n"[0])[i].Split(","[0])[j]));
-                Debug.Log("DefaultValues: " + int.Parse(textFile.text.Split("\n"[0])[i].Split(","[0])[j]));
+                //Debug.Log("DefaultValues: " + int.Parse(textFile.text.Split("\n"[0])[i].Split(","[0])[j]));
             }
         }
         
@@ -60,7 +60,7 @@ public class SetGridFromTextFile
                 if (values[j]==i)
                 {
                     values.Insert(Lenght + i, j);
-                    Debug.Log("ReOrdered_" + (Lenght + i) + " Value:" + j);
+                    //Debug.Log("ReOrdered_" + (Lenght + i) + " Value:" + j);
                     j = Lenght;
                 }
             }
