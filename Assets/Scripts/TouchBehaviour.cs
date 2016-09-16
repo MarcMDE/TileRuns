@@ -12,11 +12,14 @@ public class TouchBehaviour : MonoBehaviour
 
     Camera currentCamera;
 
+    Vector3 onGridTouchPosition;
+
 	void Start ()
     {
         currentCamera = Camera.main;
         debugImage.color = Color.black;
         distanceDebugImage.transform.localScale = toTargetDistance * Vector3.one;
+        onGridTouchPosition = Vector3.zero;
 	}
 	
 
@@ -24,12 +27,17 @@ public class TouchBehaviour : MonoBehaviour
     {
 	    if (Input.touchCount > 0)
         {
-            if (Vector3.Distance(currentCamera.ScreenToWorldPoint(Input.touches[0].position), target.position) < toTargetDistance)
+            distanceDebugImage.transform.position = Input.touches[0].position;
+
+            onGridTouchPosition = currentCamera.ScreenToWorldPoint(Input.touches[0].position);
+            onGridTouchPosition.z = target.position.z;
+
+            if (Vector3.Distance(onGridTouchPosition, target.position) < toTargetDistance)
             {
                 debugImage.color = Color.green;
-                distanceDebugImage.transform.position = currentCamera.WorldToScreenPoint(target.transform.position);
             }
+            else debugImage.color = Color.red;
         }
-        debugImage.color = Color.red;
+        else debugImage.color = Color.black;
 	}
 }

@@ -39,7 +39,7 @@ public class PathFollower : MonoBehaviour
                 else if (direction.y > 0 && transform.position.y > waypoints[waypointIndex].y) SetNextWaypoint();
                 else if (direction.y < 0 && transform.position.y < waypoints[waypointIndex].y) SetNextWaypoint();
             }
-            else if (Input.GetKey(KeyCode.Space))
+            else if (Input.GetKey(KeyCode.Space) || Input.touchCount > 0) 
             {
                 onMovement = true;
                 Debug.Log("Movement Enabled");

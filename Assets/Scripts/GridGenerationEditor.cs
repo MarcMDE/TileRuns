@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿#if UNITY_EDITOR
+using UnityEngine;
 using UnityEditor;
 
 [CustomEditor(typeof(ScreenGridGeneration))]
@@ -23,3 +23,4 @@ public class GridGenerationEditor : Editor
         }
     }
 }
+#endif
